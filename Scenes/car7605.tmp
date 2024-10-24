@@ -1,0 +1,149 @@
+[gd_scene load_steps=18 format=3 uid="uid://dfckprg7l8msg"]
+
+[ext_resource type="Script" path="res://Scripts/carrot_plot.gd" id="1_g6a0e"]
+[ext_resource type="Texture2D" uid="uid://b8m14rwfqauah" path="res://Assests/Hana Caraka Crops - Free/Crops.png" id="2_vkaah"]
+[ext_resource type="Texture2D" uid="uid://cnj6d6jl7ms5x" path="res://Assests/Hana Caraka Crops - Free/misc.png" id="3_lct2m"]
+[ext_resource type="PackedScene" uid="uid://dytxtb7bge46" path="res://Scenes/interaction_area.tscn" id="4_lkae3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ao73j"]
+atlas = ExtResource("2_vkaah")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvf0g"]
+atlas = ExtResource("2_vkaah")
+region = Rect2(304, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1cjl"]
+atlas = ExtResource("2_vkaah")
+region = Rect2(320, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyh1g"]
+atlas = ExtResource("2_vkaah")
+region = Rect2(336, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er7gm"]
+atlas = ExtResource("3_lct2m")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bm1tb"]
+atlas = ExtResource("3_lct2m")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrx24"]
+atlas = ExtResource("2_vkaah")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqkwn"]
+atlas = ExtResource("2_vkaah")
+region = Rect2(304, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgcin"]
+atlas = ExtResource("2_vkaah")
+region = Rect2(320, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtasc"]
+atlas = ExtResource("2_vkaah")
+region = Rect2(336, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0mt1e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ao73j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvf0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1cjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyh1g")
+}],
+"loop": true,
+"name": &"fast_growth",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er7gm")
+}],
+"loop": true,
+"name": &"stage_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bm1tb")
+}],
+"loop": true,
+"name": &"stage_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrx24")
+}],
+"loop": true,
+"name": &"stage_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqkwn")
+}],
+"loop": true,
+"name": &"stage_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgcin")
+}],
+"loop": true,
+"name": &"stage_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtasc")
+}],
+"loop": true,
+"name": &"stage_5",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4t1p"]
+radius = 7.07107
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fhmr1"]
+radius = 13.0384
+
+[node name="CarrotPlot" type="Area2D"]
+script = ExtResource("1_g6a0e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_vkaah")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0mt1e")
+animation = &"stage_5"
+autoplay = "stage_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g4t1p")
+
+[node name="InteractionArea" parent="." instance=ExtResource("4_lkae3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_fhmr1")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

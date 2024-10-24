@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cv1odcqrv4hal"]
+
+[ext_resource type="Texture2D" uid="uid://blef2808ff7fr" path="res://Assests/Hana Caraka Cozy Island - Free/props.png" id="1_6j8ut"]
+[ext_resource type="Script" path="res://Scripts/sale_spot.gd" id="1_f82ab"]
+[ext_resource type="PackedScene" uid="uid://dytxtb7bge46" path="res://Scenes/interaction_area.tscn" id="3_kxnrc"]
+[ext_resource type="FontFile" uid="uid://dnd62yl5a8cnx" path="res://Assests/Fonts/PixExtrusion.ttf" id="3_yos5l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ucpy2"]
+radius = 8.0
+
+[node name="SaleSpot" type="Node2D"]
+script = ExtResource("1_f82ab")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6j8ut")
+region_enabled = true
+region_rect = Rect2(97, 32, 14, 15)
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_kxnrc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_ucpy2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -22.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = -18.0
+theme_override_fonts/font = ExtResource("3_yos5l")
+theme_override_font_sizes/font_size = 16
+text = "+$X"
