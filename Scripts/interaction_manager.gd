@@ -20,13 +20,6 @@ func _process(delta):
 	if active_areas.size() > 0 && can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		active_areas[0].show_label()
-#		label.text = BASE_TEXT + active_areas[0].action_name
-#		label.global_position = active_areas[0].global_position
-#		label.global_position.y -= 36
-#		label.global_position.x -= label.size.x / 2
-#		label.show()
-#	else:
-		
 
 # Parameters: 2 different areas that the player is standing inside
 # Returns: true if area1 is closer, false if area2 is closer.

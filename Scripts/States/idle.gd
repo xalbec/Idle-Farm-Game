@@ -4,7 +4,11 @@ extends State
 var walk_state: State
 
 func enter() -> void:
-	animation_name = "idle_" + str(parent.last_dir)
+	anim_name = "idle"
+	if(parent.last_dir == Vector2.RIGHT):
+		flip_anim(false)
+	else:
+		flip_anim(true)
 	super()
  
 func process_input(event: InputEvent) -> State:

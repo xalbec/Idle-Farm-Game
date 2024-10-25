@@ -2,7 +2,7 @@ class_name State
 extends Node
 
 @export
-var animation_name: String
+var anim_name: String
 @export
 var move_speed: float = 60
 
@@ -10,7 +10,9 @@ var move_speed: float = 60
 var parent: Player
 
 func enter() -> void:
-	parent.animated_sprite.play(animation_name)
+	parent.body.play(anim_name)
+	parent.hair.play(anim_name)
+	parent.hand.play(anim_name)
 
 func exit() -> void:
 	pass
@@ -23,3 +25,8 @@ func process_frame(delta: float) -> State:
 
 func process_physics(delta: float) -> State:
 	return null
+
+func flip_anim(b: bool) -> void:
+	parent.body.flip_h = b
+	parent.hair.flip_h = b
+	parent.hand.flip_h = b

@@ -3,31 +3,27 @@ extends State
 @export
 var idle_state: State
 # Directions of motion
-var move_x = 0
-var move_y = 0
+var move_dir = Vector2.ZERO
+
+func enter() -> void:
+	anim_name = "walk"
+	super()
 
 func process_frame(delta: float) -> State:
-	if move_x == -1:
-		parent.last_dir = parent.Directions.left
-		animation_name = "walk_2"
-	elif move_x == 1:
-		parent.last_dir = parent.Directions.right
-		animation_name = "walk_0"
-	elif move_y == -1:
-		parent.last_dir = parent.Directions.up
-		animation_name = "walk_3"
-	elif move_y == 1:
-		parent.last_dir = parent.Directions.down
-		animation_name = "walk_1"
-	else:
+	if move_dir.x < 0:
+		parent.last_dir = Vector2.LEFT
+		flip_anim(true)
+	elif move_dir.x > 0:
+		parent.last_dir = Vector2.RIGHT
+		flip_anim(false)
+	elif move_dir == Vector2.ZERO:
 		return idle_state
-	parent.animated_sprite.play(animation_name)
+	parent.body.play(anim_name)
+	parent.hair.play(anim_name)
 	return null
 
 func process_physics(delta: float) -> State:
-	move_x = Input.get_axis("move_left", "move_right")
-	move_y = Input.get_axis("move_up", "move_down")
-	parent.position.x += move_x * move_speed * delta
-	parent.position.y += move_y * move_speed * delta
+	move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	parent.position += move_dir * move_speed * delta
 	parent.move_and_slide()
 	return null

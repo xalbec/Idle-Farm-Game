@@ -1,11 +1,13 @@
 class_name Player
 extends CharacterBody2D
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var body: AnimatedSprite2D = $Body
+@onready var hair: AnimatedSprite2D = $Hair
+@onready var hand: AnimatedSprite2D = $Hand
 @onready var state_machine: Node = $StateMachine
 
 enum Directions {right, down, left, up}
-var last_dir = Directions.down
+var last_dir = Vector2.RIGHT
 const SPEED = 60.0
 
 func _ready() -> void:
