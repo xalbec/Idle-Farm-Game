@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cv1odcqrv4hal"]
 
-[ext_resource type="Texture2D" uid="uid://blef2808ff7fr" path="res://Assests/Hana Caraka Cozy Island - Free/props.png" id="1_6j8ut"]
+[ext_resource type="Texture2D" uid="uid://blef2808ff7fr" path="res://Assests/Hana Caraka/Hana Caraka Cozy Island - Free/props.png" id="1_6j8ut"]
 [ext_resource type="Script" path="res://Scripts/sale_spot.gd" id="1_f82ab"]
 [ext_resource type="PackedScene" uid="uid://dytxtb7bge46" path="res://Scenes/interaction_area.tscn" id="3_kxnrc"]
 [ext_resource type="FontFile" uid="uid://dnd62yl5a8cnx" path="res://Assests/Fonts/PixExtrusion.ttf" id="3_yos5l"]

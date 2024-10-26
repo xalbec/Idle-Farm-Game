@@ -1,0 +1,172 @@
+[gd_scene load_steps=24 format=3 uid="uid://bapmlx4fc4wti"]
+
+[ext_resource type="Script" path="res://Scripts/crop_plot.gd" id="1_1w3j8"]
+[ext_resource type="Texture2D" uid="uid://cajv4ulwer5vd" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Elements/Crops/soil_00.png" id="1_isd16"]
+[ext_resource type="Texture2D" uid="uid://d2o8d6fiak4qp" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Elements/Crops/soil_03.png" id="2_qk88r"]
+[ext_resource type="Texture2D" uid="uid://dc1dq6dbau6x0" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Elements/Crops/soil_01.png" id="3_7utv5"]
+[ext_resource type="Texture2D" uid="uid://cu6y7lmfhalup" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Elements/Caleb's Crops/beetroot.png" id="4_ltxnd"]
+[ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="6_cc1wd"]
+[ext_resource type="Script" path="res://Scripts/States/Crop States/tilled.gd" id="7_0c4dx"]
+[ext_resource type="Script" path="res://Scripts/States/Crop States/empty_plot.gd" id="7_g375w"]
+[ext_resource type="Script" path="res://Scripts/States/Crop States/watered.gd" id="8_weq3h"]
+[ext_resource type="Script" path="res://Scripts/States/Crop States/planted.gd" id="9_t171a"]
+[ext_resource type="Script" path="res://Scripts/States/Crop States/growing.gd" id="10_hs6nb"]
+[ext_resource type="Script" path="res://Scripts/States/Crop States/harvested.gd" id="11_ougai"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yf2v"]
+atlas = ExtResource("2_qk88r")
+region = Rect2(0, 0, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0eqeb"]
+atlas = ExtResource("1_isd16")
+region = Rect2(0, 0, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8tyg"]
+atlas = ExtResource("3_7utv5")
+region = Rect2(0, 0, 16, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p24wy"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yf2v")
+}],
+"loop": true,
+"name": &"harvested",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0eqeb")
+}],
+"loop": true,
+"name": &"tilled",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8tyg")
+}],
+"loop": true,
+"name": &"watered",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edtmp"]
+atlas = ExtResource("4_ltxnd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqbg1"]
+atlas = ExtResource("4_ltxnd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5q7a"]
+atlas = ExtResource("4_ltxnd")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8hxj"]
+atlas = ExtResource("4_ltxnd")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jofe"]
+atlas = ExtResource("4_ltxnd")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2e1q8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edtmp")
+}],
+"loop": true,
+"name": &"beet_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqbg1")
+}],
+"loop": true,
+"name": &"beet_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5q7a")
+}],
+"loop": true,
+"name": &"beet_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8hxj")
+}],
+"loop": true,
+"name": &"beet_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jofe")
+}],
+"loop": true,
+"name": &"beet_5",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qc05p"]
+radius = 5.0
+
+[node name="CropPlot" type="Node2D"]
+script = ExtResource("1_1w3j8")
+
+[node name="Plot" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p24wy")
+animation = &"watered"
+autoplay = "empty"
+
+[node name="Crop" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_2e1q8")
+animation = &"beet_1"
+autoplay = "empty"
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("6_cc1wd")
+starting_state = NodePath("Tilled")
+
+[node name="EmptyPlot" type="Node" parent="StateMachine"]
+script = ExtResource("7_g375w")
+
+[node name="Tilled" type="Node" parent="StateMachine"]
+script = ExtResource("7_0c4dx")
+
+[node name="Watered" type="Node" parent="StateMachine"]
+script = ExtResource("8_weq3h")
+
+[node name="Planted" type="Node" parent="StateMachine"]
+script = ExtResource("9_t171a")
+
+[node name="Growing" type="Node" parent="StateMachine"]
+script = ExtResource("10_hs6nb")
+
+[node name="Harvested" type="Node" parent="StateMachine"]
+script = ExtResource("11_ougai")
+
+[node name="InteractionZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
+shape = SubResource("CircleShape2D_qc05p")
+
+[connection signal="body_entered" from="InteractionZone" to="." method="_on_interaction_zone_body_entered"]

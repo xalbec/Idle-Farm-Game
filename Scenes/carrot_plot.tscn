@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://dfckprg7l8msg"]
 
 [ext_resource type="Script" path="res://Scripts/carrot_plot.gd" id="1_g6a0e"]
-[ext_resource type="Texture2D" uid="uid://b8m14rwfqauah" path="res://Assests/Hana Caraka Crops - Free/Crops.png" id="2_vkaah"]
-[ext_resource type="Texture2D" uid="uid://cnj6d6jl7ms5x" path="res://Assests/Hana Caraka Crops - Free/misc.png" id="3_lct2m"]
+[ext_resource type="Texture2D" uid="uid://b8m14rwfqauah" path="res://Assests/Hana Caraka/Hana Caraka Crops - Free/Crops.png" id="2_vkaah"]
+[ext_resource type="Texture2D" uid="uid://cnj6d6jl7ms5x" path="res://Assests/Hana Caraka/Hana Caraka Crops - Free/misc.png" id="3_lct2m"]
 [ext_resource type="PackedScene" uid="uid://dytxtb7bge46" path="res://Scenes/interaction_area.tscn" id="4_e0drg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ao73j"]
@@ -127,7 +127,7 @@ region_rect = Rect2(48, 16, 16, 16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0mt1e")
-animation = &"stage_5"
+animation = &"stage_2"
 autoplay = "stage_1"
 
 [node name="InteractionArea" parent="." instance=ExtResource("4_e0drg")]

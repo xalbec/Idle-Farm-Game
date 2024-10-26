@@ -6,8 +6,6 @@ extends CharacterBody2D
 @onready var hand: AnimatedSprite2D = $Hand
 @onready var state_machine: Node = $StateMachine
 
-enum Directions {right, down, left, up}
-var last_dir = Vector2.RIGHT
 const SPEED = 60.0
 
 func _ready() -> void:
@@ -17,7 +15,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
 
-func _physics_process(delta):
+func _physics_process(delta: float):
 	state_machine.process_physics(delta)
 
 func _process(delta: float) -> void:

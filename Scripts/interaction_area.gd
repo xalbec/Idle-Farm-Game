@@ -1,7 +1,8 @@
 extends Area2D
 class_name InteractionArea
 
-@export var action_name: String = "interact"
+@export 
+var action_name: String = "interact"
 @onready var label: Label = $Label
 
 # Seemingly like an abstract method called interact()

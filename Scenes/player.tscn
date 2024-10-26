@@ -1,15 +1,19 @@
-[gd_scene load_steps=66 format=3 uid="uid://cyq7nx41eafn5"]
+[gd_scene load_steps=85 format=3 uid="uid://cyq7nx41eafn5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_7gyvt"]
-[ext_resource type="Script" path="res://Scripts/state_machine.gd" id="2_h8upn"]
+[ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="2_h8upn"]
 [ext_resource type="Script" path="res://Scripts/States/idle.gd" id="3_aouyd"]
 [ext_resource type="Script" path="res://Scripts/States/walk.gd" id="4_7d7pp"]
 [ext_resource type="Texture2D" uid="uid://5qbk5glrvq6u" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/IDLE/base_idle_strip9.png" id="5_k6dji"]
+[ext_resource type="Script" path="res://Scripts/States/water.gd" id="5_s23qn"]
 [ext_resource type="Texture2D" uid="uid://bnecvkty36t0u" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/WALKING/base_walk_strip8.png" id="6_0lxx3"]
+[ext_resource type="Texture2D" uid="uid://wvoqkt4h24y1" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/WATERING/base_watering_strip5.png" id="7_jvndu"]
 [ext_resource type="Texture2D" uid="uid://cgbyp8kefjts8" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/IDLE/bowlhair_idle_strip9.png" id="7_q40mm"]
 [ext_resource type="Texture2D" uid="uid://dk3cb7p4ec0lw" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/WALKING/bowlhair_walk_strip8.png" id="8_57c41"]
 [ext_resource type="Texture2D" uid="uid://bvjukfl5o3t21" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/IDLE/tools_idle_strip9.png" id="9_x7f4f"]
 [ext_resource type="Texture2D" uid="uid://cyuop064sr6u2" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/WALKING/tools_walk_strip8.png" id="10_jjdst"]
+[ext_resource type="Texture2D" uid="uid://cmdj4nlqxu0n4" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/WATERING/bowlhair_watering_strip5.png" id="10_qodhf"]
+[ext_resource type="Texture2D" uid="uid://chtxrugk2h120" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/WATERING/tools_watering_strip5.png" id="13_pbkkc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_llet1"]
 atlas = ExtResource("5_k6dji")
@@ -79,6 +83,26 @@ region = Rect2(576, 0, 96, 64)
 atlas = ExtResource("6_0lxx3")
 region = Rect2(672, 0, 96, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqlvh"]
+atlas = ExtResource("7_jvndu")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02hnl"]
+atlas = ExtResource("7_jvndu")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s68yk"]
+atlas = ExtResource("7_jvndu")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyeaf"]
+atlas = ExtResource("7_jvndu")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd3st"]
+atlas = ExtResource("7_jvndu")
+region = Rect2(384, 0, 96, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0jxt2"]
 animations = [{
 "frames": [{
@@ -140,6 +164,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqlvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02hnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s68yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyeaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd3st")
+}],
+"loop": true,
+"name": &"water",
 "speed": 10.0
 }]
 
@@ -211,6 +255,26 @@ region = Rect2(576, 0, 96, 64)
 atlas = ExtResource("8_57c41")
 region = Rect2(672, 0, 96, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tspmf"]
+atlas = ExtResource("10_qodhf")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6nbx"]
+atlas = ExtResource("10_qodhf")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdwot"]
+atlas = ExtResource("10_qodhf")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_voap5"]
+atlas = ExtResource("10_qodhf")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnhtl"]
+atlas = ExtResource("10_qodhf")
+region = Rect2(384, 0, 96, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_eb53p"]
 animations = [{
 "frames": [{
@@ -272,6 +336,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tspmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6nbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdwot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_voap5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnhtl")
+}],
+"loop": true,
+"name": &"water",
 "speed": 10.0
 }]
 
@@ -343,6 +427,26 @@ region = Rect2(576, 0, 96, 64)
 atlas = ExtResource("10_jjdst")
 region = Rect2(672, 0, 96, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cksi"]
+atlas = ExtResource("13_pbkkc")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0tpy"]
+atlas = ExtResource("13_pbkkc")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tneg1"]
+atlas = ExtResource("13_pbkkc")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmt4n"]
+atlas = ExtResource("13_pbkkc")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd2nc"]
+atlas = ExtResource("13_pbkkc")
+region = Rect2(384, 0, 96, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_g3405"]
 animations = [{
 "frames": [{
@@ -405,10 +509,30 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cksi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0tpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tneg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmt4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd2nc")
+}],
+"loop": true,
+"name": &"water",
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bl57l"]
-radius = 5.38516
+radius = 3.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_7gyvt")
@@ -417,36 +541,45 @@ script = ExtResource("1_7gyvt")
 script = ExtResource("2_h8upn")
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("walk_state")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("walk_state", "water_state")]
 script = ExtResource("3_aouyd")
 walk_state = NodePath("../Walk")
+water_state = NodePath("../Water")
 move_speed = 0.0
 
-[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "water_state")]
 script = ExtResource("4_7d7pp")
 idle_state = NodePath("../Idle")
+water_state = NodePath("../Water")
+
+[node name="Water" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state")]
+script = ExtResource("5_s23qn")
+idle_state = NodePath("../Idle")
+walk_state = NodePath("../Walk")
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_0jxt2")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.349359
+frame = 4
+frame_progress = 0.722075
 
 [node name="Hair" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_eb53p")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
-frame = 4
-frame_progress = 0.237505
 
 [node name="Hand" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_g3405")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_bl57l")
+
+[connection signal="animation_finished" from="Body" to="." method="_on_body_animation_finished"]
+[connection signal="animation_finished" from="Body" to="StateMachine/Water" method="_on_body_animation_finished"]

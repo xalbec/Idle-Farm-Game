@@ -6,7 +6,7 @@ var starting_state: State
 var current_state: State
 
 # When the machine is initialized, it will set all of the child States' parent variable to Player
-func init(parent: Player) -> void:
+func init(parent: Node2D) -> void:
 	for child in get_children():
 		child.parent = parent
 	

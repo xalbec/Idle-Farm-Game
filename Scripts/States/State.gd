@@ -7,12 +7,10 @@ var anim_name: String
 var move_speed: float = 60
 
 # Holds a reference to the Player 
-var parent: Player
+var parent: Node2D
 
 func enter() -> void:
-	parent.body.play(anim_name)
-	parent.hair.play(anim_name)
-	parent.hand.play(anim_name)
+	pass
 
 func exit() -> void:
 	pass
@@ -30,3 +28,8 @@ func flip_anim(b: bool) -> void:
 	parent.body.flip_h = b
 	parent.hair.flip_h = b
 	parent.hand.flip_h = b
+
+func player_anim_play() -> void:
+	parent.body.play(anim_name)
+	parent.hair.play(anim_name)
+	parent.hand.play(anim_name)

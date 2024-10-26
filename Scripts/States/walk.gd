@@ -2,19 +2,24 @@ extends State
 
 @export
 var idle_state: State
+@export
+var water_state: State
 # Directions of motion
 var move_dir = Vector2.ZERO
 
 func enter() -> void:
 	anim_name = "walk"
-	super()
+	player_anim_play()
+
+func process_input(event: InputEvent) -> State:
+	if event.is_action("water"):
+		return water_state
+	return null
 
 func process_frame(delta: float) -> State:
 	if move_dir.x < 0:
-		parent.last_dir = Vector2.LEFT
 		flip_anim(true)
 	elif move_dir.x > 0:
-		parent.last_dir = Vector2.RIGHT
 		flip_anim(false)
 	elif move_dir == Vector2.ZERO:
 		return idle_state
