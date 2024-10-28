@@ -14,7 +14,6 @@ var growthStage = 1;
 #perform when seed is planted
 func _on_ready() -> void:
 	timer.wait_time = growthTime
-	interaction_area.set_label("[E] Plant")
 	interaction_area.interact = Callable(self, "_on_interact")
 
 func _on_interact():

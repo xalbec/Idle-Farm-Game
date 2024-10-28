@@ -5,8 +5,10 @@ extends CharacterBody2D
 @onready var hair: AnimatedSprite2D = $Hair
 @onready var hand: AnimatedSprite2D = $Hand
 @onready var state_machine: Node = $StateMachine
+@onready var focus_collider: CollisionShape2D = $InteractionArea/FocusCollider
 
 const SPEED = 60.0
+var target
 
 func _ready() -> void:
 	# Initialize the state machine by passing a player reference for the states to use

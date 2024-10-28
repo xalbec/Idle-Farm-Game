@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://cyq7nx41eafn5"]
+[gd_scene load_steps=129 format=3 uid="uid://cyq7nx41eafn5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_7gyvt"]
 [ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="2_h8upn"]
@@ -7,13 +7,69 @@
 [ext_resource type="Texture2D" uid="uid://5qbk5glrvq6u" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/IDLE/base_idle_strip9.png" id="5_k6dji"]
 [ext_resource type="Script" path="res://Scripts/States/water.gd" id="5_s23qn"]
 [ext_resource type="Texture2D" uid="uid://bnecvkty36t0u" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/WALKING/base_walk_strip8.png" id="6_0lxx3"]
+[ext_resource type="Texture2D" uid="uid://d3unvbinoilsd" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/DIG/base_dig_strip13.png" id="6_h6fmh"]
+[ext_resource type="Script" path="res://Scripts/States/dig.gd" id="6_hsxns"]
 [ext_resource type="Texture2D" uid="uid://wvoqkt4h24y1" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/WATERING/base_watering_strip5.png" id="7_jvndu"]
 [ext_resource type="Texture2D" uid="uid://cgbyp8kefjts8" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/IDLE/bowlhair_idle_strip9.png" id="7_q40mm"]
 [ext_resource type="Texture2D" uid="uid://dk3cb7p4ec0lw" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/WALKING/bowlhair_walk_strip8.png" id="8_57c41"]
 [ext_resource type="Texture2D" uid="uid://bvjukfl5o3t21" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/IDLE/tools_idle_strip9.png" id="9_x7f4f"]
 [ext_resource type="Texture2D" uid="uid://cyuop064sr6u2" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/WALKING/tools_walk_strip8.png" id="10_jjdst"]
 [ext_resource type="Texture2D" uid="uid://cmdj4nlqxu0n4" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/WATERING/bowlhair_watering_strip5.png" id="10_qodhf"]
+[ext_resource type="Texture2D" uid="uid://bowno6xqd7u2c" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/DIG/bowlhair_dig_strip13.png" id="10_ymwb8"]
 [ext_resource type="Texture2D" uid="uid://chtxrugk2h120" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/WATERING/tools_watering_strip5.png" id="13_pbkkc"]
+[ext_resource type="Texture2D" uid="uid://dmug7fp8sryu0" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/DIG/tools_dig_strip13.png" id="14_3w4xh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_se8x5"]
+atlas = ExtResource("6_h6fmh")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sytld"]
+atlas = ExtResource("6_h6fmh")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7umf"]
+atlas = ExtResource("6_h6fmh")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gdkd"]
+atlas = ExtResource("6_h6fmh")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1tjm"]
+atlas = ExtResource("6_h6fmh")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yo01"]
+atlas = ExtResource("6_h6fmh")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21rbr"]
+atlas = ExtResource("6_h6fmh")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d802y"]
+atlas = ExtResource("6_h6fmh")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36yu8"]
+atlas = ExtResource("6_h6fmh")
+region = Rect2(768, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gll35"]
+atlas = ExtResource("6_h6fmh")
+region = Rect2(864, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3ib1"]
+atlas = ExtResource("6_h6fmh")
+region = Rect2(960, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do7je"]
+atlas = ExtResource("6_h6fmh")
+region = Rect2(1056, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ftoh"]
+atlas = ExtResource("6_h6fmh")
+region = Rect2(1152, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_llet1"]
 atlas = ExtResource("5_k6dji")
@@ -107,6 +163,50 @@ region = Rect2(384, 0, 96, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_se8x5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sytld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7umf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gdkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1tjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yo01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21rbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d802y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36yu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gll35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3ib1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do7je")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ftoh")
+}],
+"loop": false,
+"name": &"dig",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_llet1")
 }, {
 "duration": 1.0,
@@ -186,6 +286,58 @@ animations = [{
 "name": &"water",
 "speed": 10.0
 }]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etk6e"]
+atlas = ExtResource("10_ymwb8")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2cjb"]
+atlas = ExtResource("10_ymwb8")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84lq8"]
+atlas = ExtResource("10_ymwb8")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u0tn"]
+atlas = ExtResource("10_ymwb8")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytvam"]
+atlas = ExtResource("10_ymwb8")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn20d"]
+atlas = ExtResource("10_ymwb8")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnhe3"]
+atlas = ExtResource("10_ymwb8")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5o5qm"]
+atlas = ExtResource("10_ymwb8")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbc51"]
+atlas = ExtResource("10_ymwb8")
+region = Rect2(768, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0r0t"]
+atlas = ExtResource("10_ymwb8")
+region = Rect2(864, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca6vc"]
+atlas = ExtResource("10_ymwb8")
+region = Rect2(960, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o440v"]
+atlas = ExtResource("10_ymwb8")
+region = Rect2(1056, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd7p0"]
+atlas = ExtResource("10_ymwb8")
+region = Rect2(1152, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ax5w3"]
 atlas = ExtResource("7_q40mm")
@@ -279,6 +431,50 @@ region = Rect2(384, 0, 96, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_etk6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2cjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84lq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u0tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytvam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nn20d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnhe3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5o5qm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbc51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0r0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca6vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o440v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd7p0")
+}],
+"loop": false,
+"name": &"dig",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ax5w3")
 }, {
 "duration": 1.0,
@@ -358,6 +554,58 @@ animations = [{
 "name": &"water",
 "speed": 10.0
 }]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udur4"]
+atlas = ExtResource("14_3w4xh")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5ogu"]
+atlas = ExtResource("14_3w4xh")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fu8d"]
+atlas = ExtResource("14_3w4xh")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfgl7"]
+atlas = ExtResource("14_3w4xh")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3wda"]
+atlas = ExtResource("14_3w4xh")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhdad"]
+atlas = ExtResource("14_3w4xh")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m20f"]
+atlas = ExtResource("14_3w4xh")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lctdm"]
+atlas = ExtResource("14_3w4xh")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcc7o"]
+atlas = ExtResource("14_3w4xh")
+region = Rect2(768, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48ge1"]
+atlas = ExtResource("14_3w4xh")
+region = Rect2(864, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avev6"]
+atlas = ExtResource("14_3w4xh")
+region = Rect2(960, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5gbo"]
+atlas = ExtResource("14_3w4xh")
+region = Rect2(1056, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul1x0"]
+atlas = ExtResource("14_3w4xh")
+region = Rect2(1152, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gm6au"]
 atlas = ExtResource("9_x7f4f")
@@ -451,6 +699,50 @@ region = Rect2(384, 0, 96, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_udur4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5ogu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fu8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfgl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3wda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhdad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m20f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lctdm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcc7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48ge1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avev6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5gbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ul1x0")
+}],
+"loop": false,
+"name": &"dig",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_gm6au")
 }, {
 "duration": 1.0,
@@ -534,6 +826,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_bl57l"]
 radius = 3.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3av7"]
+radius = 2.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_7gyvt")
 
@@ -541,45 +836,57 @@ script = ExtResource("1_7gyvt")
 script = ExtResource("2_h8upn")
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("walk_state", "water_state")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("walk_state", "water_state", "dig_state")]
 script = ExtResource("3_aouyd")
 walk_state = NodePath("../Walk")
 water_state = NodePath("../Water")
+dig_state = NodePath("../Dig")
 move_speed = 0.0
 
-[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "water_state")]
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "water_state", "dig_state")]
 script = ExtResource("4_7d7pp")
 idle_state = NodePath("../Idle")
 water_state = NodePath("../Water")
+dig_state = NodePath("../Dig")
 
 [node name="Water" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state")]
 script = ExtResource("5_s23qn")
 idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walk")
 
+[node name="Dig" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state")]
+script = ExtResource("6_hsxns")
+idle_state = NodePath("../Idle")
+walk_state = NodePath("../Walk")
+
 [node name="Body" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_0jxt2")
-animation = &"idle"
+animation = &"dig"
 autoplay = "idle"
-frame = 4
-frame_progress = 0.722075
 
 [node name="Hair" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_eb53p")
-animation = &"idle"
+animation = &"dig"
 autoplay = "idle"
 
 [node name="Hand" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_g3405")
-animation = &"idle"
+animation = &"dig"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_bl57l")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="FocusCollider" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(13, -2)
+shape = SubResource("CircleShape2D_d3av7")
 
 [connection signal="animation_finished" from="Body" to="." method="_on_body_animation_finished"]
 [connection signal="animation_finished" from="Body" to="StateMachine/Water" method="_on_body_animation_finished"]

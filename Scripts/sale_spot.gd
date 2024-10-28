@@ -5,7 +5,6 @@ extends Node2D
 @onready var label: Label = $Label
 
 func _ready() -> void:
-	interaction_area.set_label("[E] Sell")
 	interaction_area.interact = Callable(self, "_on_interact")
 
 func _on_interact():

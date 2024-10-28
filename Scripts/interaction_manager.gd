@@ -12,14 +12,12 @@ func register_area(area: InteractionArea):
 
 func unregister_area(area: InteractionArea):
 	var index = active_areas.find(area)
-	area.hide_label()
 	if index != -1:
 		active_areas.remove_at(index)
 
 func _process(delta):
 	if active_areas.size() > 0 && can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player)
-		active_areas[0].show_label()
 
 # Parameters: 2 different areas that the player is standing inside
 # Returns: true if area1 is closer, false if area2 is closer.

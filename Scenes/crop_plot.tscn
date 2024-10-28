@@ -57,23 +57,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_edtmp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc7cv"]
 atlas = ExtResource("4_ltxnd")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aqbg1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll2d6"]
 atlas = ExtResource("4_ltxnd")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n5q7a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7st4"]
 atlas = ExtResource("4_ltxnd")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y8hxj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bknbk"]
 atlas = ExtResource("4_ltxnd")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8jofe"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdiab"]
 atlas = ExtResource("4_ltxnd")
 region = Rect2(64, 0, 16, 16)
 
@@ -81,42 +81,22 @@ region = Rect2(64, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_edtmp")
-}],
-"loop": true,
-"name": &"beet_1",
-"speed": 5.0
+"texture": SubResource("AtlasTexture_sc7cv")
 }, {
-"frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aqbg1")
-}],
-"loop": true,
-"name": &"beet_2",
-"speed": 5.0
+"texture": SubResource("AtlasTexture_ll2d6")
 }, {
-"frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n5q7a")
-}],
-"loop": true,
-"name": &"beet_3",
-"speed": 5.0
+"texture": SubResource("AtlasTexture_o7st4")
 }, {
-"frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y8hxj")
-}],
-"loop": true,
-"name": &"beet_4",
-"speed": 5.0
+"texture": SubResource("AtlasTexture_bknbk")
 }, {
-"frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8jofe")
+"texture": SubResource("AtlasTexture_pdiab")
 }],
 "loop": true,
-"name": &"beet_5",
+"name": &"beet",
 "speed": 5.0
 }, {
 "frames": [],
@@ -126,37 +106,45 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qc05p"]
-radius = 5.0
+radius = 6.0
 
-[node name="CropPlot" type="Node2D"]
+[node name="CropPlot" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_1w3j8")
 
 [node name="Plot" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p24wy")
-animation = &"watered"
+animation = &"empty"
 autoplay = "empty"
 
 [node name="Crop" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_2e1q8")
-animation = &"beet_1"
+animation = &"empty"
 autoplay = "empty"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("6_cc1wd")
-starting_state = NodePath("Tilled")
+starting_state = NodePath("EmptyPlot")
 
-[node name="EmptyPlot" type="Node" parent="StateMachine"]
+[node name="EmptyPlot" type="Node" parent="StateMachine" node_paths=PackedStringArray("tilled_state")]
 script = ExtResource("7_g375w")
+tilled_state = NodePath("../Tilled")
 
-[node name="Tilled" type="Node" parent="StateMachine"]
+[node name="Tilled" type="Node" parent="StateMachine" node_paths=PackedStringArray("watered_state", "planted_state", "empty_state")]
 script = ExtResource("7_0c4dx")
+watered_state = NodePath("../Watered")
+planted_state = NodePath("../Planted")
+empty_state = NodePath("../EmptyPlot")
 
-[node name="Watered" type="Node" parent="StateMachine"]
+[node name="Watered" type="Node" parent="StateMachine" node_paths=PackedStringArray("growing_state")]
 script = ExtResource("8_weq3h")
+growing_state = NodePath("../Growing")
 
-[node name="Planted" type="Node" parent="StateMachine"]
+[node name="Planted" type="Node" parent="StateMachine" node_paths=PackedStringArray("growing_state")]
 script = ExtResource("9_t171a")
+growing_state = NodePath("../Growing")
 
 [node name="Growing" type="Node" parent="StateMachine"]
 script = ExtResource("10_hs6nb")
@@ -164,9 +152,8 @@ script = ExtResource("10_hs6nb")
 [node name="Harvested" type="Node" parent="StateMachine"]
 script = ExtResource("11_ougai")
 
-[node name="InteractionZone" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qc05p")
 
-[connection signal="body_entered" from="InteractionZone" to="." method="_on_interaction_zone_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

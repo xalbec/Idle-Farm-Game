@@ -33,3 +33,8 @@ func player_anim_play() -> void:
 	parent.body.play(anim_name)
 	parent.hair.play(anim_name)
 	parent.hand.play(anim_name)
+
+func play_frame(anim_name: String, frame: int) -> void:
+	parent.crop.play(anim_name)
+	parent.crop.pause()
+	parent.crop.set_frame(frame)

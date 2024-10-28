@@ -1,27 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dytxtb7bge46"]
+[gd_scene load_steps=2 format=3 uid="uid://dytxtb7bge46"]
 
 [ext_resource type="Script" path="res://Scripts/interaction_area.gd" id="1_1l7q4"]
-[ext_resource type="FontFile" uid="uid://6uo47ufd6lhm" path="res://Assests/Fonts/QuinqueFive.ttf" id="2_5i0nx"]
 
 [node name="InteractionArea" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_1l7q4")
-
-[node name="Label" type="Label" parent="."]
-z_index = 10
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -45.0
-offset_top = -16.0
-offset_right = 45.0
-offset_bottom = -9.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_5i0nx")
-theme_override_font_sizes/font_size = 5
-text = "[E] TO INTERACT"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

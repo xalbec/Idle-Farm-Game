@@ -4,6 +4,7 @@ extends Node
 var starting_state: State
 
 var current_state: State
+var requested_state: State
 
 # When the machine is initialized, it will set all of the child States' parent variable to Player
 func init(parent: Node2D) -> void:
@@ -37,3 +38,6 @@ func process_frame(delta: float) -> void:
 	var new_state = current_state.process_frame(delta)
 	if new_state:
 		change_state(new_state)
+
+func request_state_change(request: State) -> void:
+	requested_state = request
