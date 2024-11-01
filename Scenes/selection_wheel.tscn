@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3s6ao5eer6b5"]
+
+[ext_resource type="Script" path="res://Scripts/selection_wheel.gd" id="1_uu244"]
+[ext_resource type="Texture2D" uid="uid://cbrah7hutg4jg" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/UI/cancel.png" id="2_l66ek"]
+[ext_resource type="Texture2D" uid="uid://go2dxbtvqnya" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/UI/shovel.png" id="3_0jlkt"]
+[ext_resource type="Texture2D" uid="uid://bv0nl4r4hy5je" path="res://Assests/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/UI/water.png" id="4_jk7r7"]
+
+[node name="SelectionWheel" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_uu244")
+background_color = Color(0.172833, 0.172833, 0.172833, 1)
+line_color = Color(0.758192, 0.758192, 0.758192, 1)
+highlight_color = Color(0.470076, 0.470076, 0.470076, 1)
+outer_radius = 50
+inner_radius = 15
+line_width = 1
+options = Array[CompressedTexture2D]([ExtResource("2_l66ek"), ExtResource("3_0jlkt"), ExtResource("4_jk7r7")])
